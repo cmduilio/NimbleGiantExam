@@ -1,0 +1,42 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>220</x><y>510</y><w>520</w><h>170</h></coordinates><panel_attributes>Block
+--
+- int32 ColorIndex = 0
+- TMap&lt;int32, UMaterial*&gt; Colors
++ class UStaticMeshComponent* StaticMeshComponent;
++ class UBoxComponent* CollisionNeighbors;
+--
++ void UpdateColor();
++ void SelectColor();
++ GetLifetimeReplicatedProps(TArray&lt;FLifetimeProperty&gt;&amp; OutLifetimeProps) const override;
++ int32 GetColorIndex();
++ void GetNeighbors(TSet&lt;AActor*&gt;* Hits);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1160</x><y>480</y><w>210</w><h>50</h></coordinates><panel_attributes>GS_Nimble
+--
++ TArray&lt;APlayerState*&gt; PlayerArray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>100</y><w>380</w><h>120</h></coordinates><panel_attributes>NimbleGiantCharacter
+--
++ TSubclassOf&lt;class ANimbleGiantProjectile&gt; ProjectileClass
++ float Score = 0
+--
++ void ShootServer()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>280</y><w>350</w><h>140</h></coordinates><panel_attributes>NimbleGiantGameMode
+--
+- int32 CubesLeft;
+- FString Winner;
+- int32 ScoreWinner;
+--
++ void CubeHit(ABlock* Block, ANimbleGiantCharacter* Player);
++ int32 DoWhenHit(TSet&lt;FString&gt;* Cubes, ABlock* Block);
++ int32 CalculateScoreWithFibonacci(int32 Number);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>320</y><w>380</w><h>90</h></coordinates><panel_attributes>NimbleGiantProjectile
+--
++ void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor,
+ UPrimitiveComponent* OtherComp, FVector NormalImpulse, 
+const FHitResult&amp; Hit)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>310</y><w>240</w><h>90</h></coordinates><panel_attributes>PyramidGenerator
+--
++ TSubclassOf&lt;class ABlock&gt;  BlockClass;
++ int32 Size;
+--
+- void SpawnBlocks()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>210</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>400</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>340</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>410</y><w>130</w><h>120</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;100;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>180</y><w>120</w><h>120</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;100;100</additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>410</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1040</x><y>380</y><w>150</w><h>120</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>130;100;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>480</y><w>210</w><h>70</h></coordinates><panel_attributes>PS_NimbleGiant
+--
+- float Score
+--
++ void AddScore(int32 Points)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>500</y><w>160</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes><additional_attributes>10;10;140;10</additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>390</y><w>150</w><h>140</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>130;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>210</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element></diagram>
